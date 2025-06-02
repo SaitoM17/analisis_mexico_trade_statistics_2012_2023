@@ -1,5 +1,4 @@
-# 📊 [Nombre_Del_Proyecto]
-# [Título del Análisis]
+# 📊 Análisis "Mexico Trade Statistics 2012 - 2023"
 
 Este proyecto realiza un análisis [exploratorio / predictivo / descriptivo] de [tema del proyecto]. El conjunto de datos incluye información sobre [breve descripción del contenido del dataset].
 
@@ -33,7 +32,7 @@ El conjunto de datos utilizado contiene las siguientes columnas:
 - `NombreColumna3`: [Descripción]
 - `...`
 
-Fuente: [Nombre de la fuente o “datos simulados/ficticios”].
+Fuente: https://www.kaggle.com/datasets/elanderos/mexico-trade-statistics-2012-2023?select=mex_trade_2022.csv.
 
 ---
 
