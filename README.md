@@ -6,7 +6,7 @@
 - [🎯 Propósito](#-propósito)
 - [📦 Conjunto de Datos](#-conjunto-de-datos)
 - [🧪 Desarrollo del Proyecto](#-desarrollo-del-proyecto)
-- [🛠️ Tecnologías](#-tecnologías)
+- [🛠️ Tecnologías](#️-tecnologías)
 - [⚙️ Instalación](#-instalación)
 - [📈 Conclusiones y Recomendaciones](#conclusiones-y-recomendaciones)
 - [👤 Autor](#-autor)
