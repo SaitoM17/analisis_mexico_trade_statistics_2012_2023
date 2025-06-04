@@ -1,25 +1,21 @@
 # 📊 Análisis "Mexico Trade Statistics 2012 - 2023"
-
-Este proyecto realiza un análisis [exploratorio / predictivo / descriptivo] de [tema del proyecto]. El conjunto de datos incluye información sobre [breve descripción del contenido del dataset].
-
 ---
 
 ## 📚 Tabla de Contenidos
 
 - [🎯 Propósito](#propósito)
 - [📦 Conjunto de Datos](#conjunto-de-datos)
-- [🧪 Pasos del Proyecto](#pasos-del-proyecto)
-- [🛠️ Tecnologías](#tecnologías)
-- [⚙️ Instalación](#instalación)
-- [🚀 Uso](#uso)
+- [🧪 Desarrollo del Proyecto](#-desarrollo-del-proyecto)
+- [🛠️ Tecnologías](#-tecnologías)
+- [⚙️ Instalación](#-instalación)
 - [📈 Conclusiones y Recomendaciones](#conclusiones-y-recomendaciones)
-- [👤 Autores](#autores)
+- [👤 Autor](#-autor)
 
 ---
 
 ## 🎯 Propósito
 
-El objetivo de este proyecto es [objetivo general del análisis], con el fin de [impacto esperado, decisiones que se tomarán, etc.].
+Analizar la evolución del comercio exterior de México entre 2012 y 2023, identificando los principales socios comerciales, productos clave, tendencias de exportación e importación, y patrones económicos relevantes mediante técnicas de análisis de datos.
 
 ---
 
@@ -36,25 +32,33 @@ Fuente: https://www.kaggle.com/datasets/elanderos/mexico-trade-statistics-2012-2
 
 ---
 
-## 🧪 Pasos del Proyecto
+## 🧪 Desarrollo del Proyecto
 
-1. **Carga y exploración inicial de los datos**:
+### **Carga y exploración inicial de los datos**:
    - Exploración básica con `.head()`, `.info()`, `.describe()`, etc.
 
-2. **Limpieza y preprocesamiento**:
+### **Limpieza y preprocesamiento**:
    - Manejo de valores nulos, duplicados, formatos y conversiones de fechas.
 
-3. **Análisis exploratorio de datos (EDA)**:
+### **Análisis exploratorio de datos (EDA)**:
    - [Ej. Distribución, correlaciones, agrupaciones, etc.]
 
-4. **Visualización de datos**:
+### **Visualización de datos**:
    - Uso de gráficos de barras, líneas, cajas, dispersión y mapas de calor.
 
-5. **Modelado o reportes (opcional)**:
+### **Modelado o reportes (opcional)**:
    - [Si aplica: modelos de ML, clustering, predicciones, etc.]
 
-6. **Conclusiones y recomendaciones**:
+### **Conclusiones y recomendaciones**:
    - Síntesis de hallazgos clave y propuestas de acción.
+
+---
+
+## 📈 Conclusiones y Recomendaciones
+
+- [Insight 1]
+- [Insight 2]
+- [Recomendación práctica o estratégica basada en los datos]
 
 ---
 
@@ -107,14 +111,6 @@ python -m venv venv
     ```
     pip install numpy pandas matplotlib seaborn scikit-learn
     ```
----
-
-## 📈 Conclusiones y Recomendaciones
-
-- [Insight 1]
-- [Insight 2]
-- [Recomendación práctica o estratégica basada en los datos]
-
 ---
 
 ## 👤 Autor
