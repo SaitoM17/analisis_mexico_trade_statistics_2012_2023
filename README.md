@@ -3,13 +3,14 @@
 
 ## 📚 Tabla de Contenidos
 
-- [🎯 Propósito](#propósito)
-- [📦 Conjunto de Datos](#conjunto-de-datos)
+- [🎯 Propósito](#-propósito)
+- [📦 Conjunto de Datos](#-conjunto-de-datos)
 - [🧪 Desarrollo del Proyecto](#-desarrollo-del-proyecto)
 - [🛠️ Tecnologías](#-tecnologías)
 - [⚙️ Instalación](#-instalación)
 - [📈 Conclusiones y Recomendaciones](#conclusiones-y-recomendaciones)
 - [👤 Autor](#-autor)
+- [📝 Licencia](#-licencia)
 
 ---
 
