@@ -24,10 +24,14 @@ Analizar la evolución del comercio exterior de México entre 2012 y 2023, ident
 
 El conjunto de datos utilizado contiene las siguientes columnas:
 
-- `NombreColumna1`: [Descripción]
-- `NombreColumna2`: [Descripción]
-- `NombreColumna3`: [Descripción]
-- `...`
+- `prod_est`: Nombre de la institución responsable de la recopilación de datos.
+- `coverage`: Área geográfica a la que se refieren los indicadores estadísticos.
+- `type`: Tipo de operación comercial.
+- `year`: Año.
+- `month`: Mes numérico.
+- `concept`: Descripción de los principales agregados de la información.
+- `value_usd`: Valor de venta en millones de dólares estadounidenses, valorado en base FOB o CIF.
+- `status`: Estado de las cifras según los lineamientos del INEGI.
 
 Fuente: https://www.kaggle.com/datasets/elanderos/mexico-trade-statistics-2012-2023?select=mex_trade_2022.csv.
 
