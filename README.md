@@ -131,9 +131,280 @@ En conclusión, este análisis exploratorio preliminar no identificó problemas 
 
 *Archivo: 1_eda.ipynb*
 
-### **Limpieza y preprocesamiento**:
-   - Manejo de valores nulos, duplicados, formatos y conversiones de fechas.
+### **Limpieza y preprocesamiento**
+Durate la limpieza y preparación de los cojuntos de datos se opto por unir los cuatro conjuntos de datos para formar uno solo conjunto de datos que incluya todos los registros.
+```Python
+df_2012_2023 = pd.concat([df_2012_2020, df_2021, df_2022, df_2023])
+filas, columnas = df_2012_2023.shape
 
+print('Filas y columnas del DataFrame 2012 - 2023 (unión de los 4 conjuntos de datos)')
+print(f'Filas: {filas}\nColumnas: {columnas}')
+```
+
+```bash
+Filas y columnas del DataFrame 2012 - 2023 (unión de los 4 conjuntos de datos)
+Filas: 2556
+Columnas: 8
+```
+Por lo que el nuevo conjunto de datos cuenta con *2556* filas y *8* columnas, se verifico los tipo de tados de cada columna dicho tipo de datos son correctos por lo cual no sera necesario cambiar el tipo de datos de cada columna.
+
+Debido a la creación del nuevo conjunto de datos se rectificaron los datos para detectar los valores nulos y duplicados, no se encontraron valores nulos ni duplicados.
+```Python
+# Verificar valores nulos
+valores_nulos = df_2012_2023.isnull().sum()
+print(f'Nulos\n{valores_nulos}')
+
+# Verificar duplicados
+duplicados = df_2012_2023.duplicated().sum()
+print(f'\nDuplicados: {duplicados}')
+```
+```bash
+Nulos
+prod_est     0
+coverage     0
+type         0
+year         0
+month        0
+concept      0
+value_usd    0
+status       0
+dtype: int64
+
+Duplicados: 0
+```
+Los campos ***prod_est, converge, type, concept, status*** ya se revisaron durante el EDA inicial: no se detectaron errores ni necesidad de limpieza adicional en dichos campos.
+
+Se realizo un análisis para los valores negativos encontrados en el análisis preliminar
+```Python
+valores_negativos = df_2012_2023[df_2012_2023['value_usd'] < 0]
+print(f'Cantidad de valores negativos: {len(valores_negativos)}')
+valores_negativos.head(10)
+```
+```Bash
+Cantidad de valores negativos: 199
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>prod_est</th>
+      <th>coverage</th>
+      <th>type</th>
+      <th>year</th>
+      <th>month</th>
+      <th>concept</th>
+      <th>value_usd</th>
+      <th>status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>16</th>
+      <td>Trade Balance of Goods of Mexico</td>
+      <td>National</td>
+      <td>Not applicable</td>
+      <td>2012</td>
+      <td>1</td>
+      <td>Total Trade Balance Exports Total - Imports Total</td>
+      <td>-267.418000</td>
+      <td>Final Figures</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Trade Balance of Goods of Mexico</td>
+      <td>National</td>
+      <td>Not applicable</td>
+      <td>2012</td>
+      <td>1</td>
+      <td>Total Trade Balance Exports Total - Imports To...</td>
+      <td>-1013.224000</td>
+      <td>Final Figures</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>Trade Balance of Goods of Mexico</td>
+      <td>National</td>
+      <td>Not applicable</td>
+      <td>2012</td>
+      <td>2</td>
+      <td>Total Trade Balance Exports Total - Imports To...</td>
+      <td>-267.776000</td>
+      <td>Final Figures</td>
+    </tr>
+    <tr>
+      <th>71</th>
+      <td>Trade Balance of Goods of Mexico</td>
+      <td>National</td>
+      <td>Not applicable</td>
+      <td>2012</td>
+      <td>4</td>
+      <td>Total Trade Balance Exports Total - Imports To...</td>
+      <td>-366.619000</td>
+      <td>Final Figures</td>
+    </tr>
+    <tr>
+      <th>89</th>
+      <td>Trade Balance of Goods of Mexico</td>
+      <td>National</td>
+      <td>Not applicable</td>
+      <td>2012</td>
+      <td>5</td>
+      <td>Total Trade Balance Exports Total - Imports To...</td>
+      <td>-532.382000</td>
+      <td>Final Figures</td>
+    </tr>
+    <tr>
+      <th>107</th>
+      <td>Trade Balance of Goods of Mexico</td>
+      <td>National</td>
+      <td>Not applicable</td>
+      <td>2012</td>
+      <td>6</td>
+      <td>Total Trade Balance Exports Total - Imports To...</td>
+      <td>-166.668000</td>
+      <td>Final Figures</td>
+    </tr>
+    <tr>
+      <th>124</th>
+      <td>Trade Balance of Goods of Mexico</td>
+      <td>National</td>
+      <td>Not applicable</td>
+      <td>2012</td>
+      <td>7</td>
+      <td>Total Trade Balance Exports Total - Imports Total</td>
+      <td>-409.644000</td>
+      <td>Final Figures</td>
+    </tr>
+    <tr>
+      <th>125</th>
+      <td>Trade Balance of Goods of Mexico</td>
+      <td>National</td>
+      <td>Not applicable</td>
+      <td>2012</td>
+      <td>7</td>
+      <td>Total Trade Balance Exports Total - Imports To...</td>
+      <td>-1224.047000</td>
+      <td>Final Figures</td>
+    </tr>
+    <tr>
+      <th>142</th>
+      <td>Trade Balance of Goods of Mexico</td>
+      <td>National</td>
+      <td>Not applicable</td>
+      <td>2012</td>
+      <td>8</td>
+      <td>Total Trade Balance Exports Total - Imports Total</td>
+      <td>-981.812999</td>
+      <td>Final Figures</td>
+    </tr>
+    <tr>
+      <th>143</th>
+      <td>Trade Balance of Goods of Mexico</td>
+      <td>National</td>
+      <td>Not applicable</td>
+      <td>2012</td>
+      <td>8</td>
+      <td>Total Trade Balance Exports Total - Imports To...</td>
+      <td>-1844.143000</td>
+      <td>Final Figures</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+```
+
+Se identifico el tipo de conceptos que tiene estos valores negativos
+```Python
+concept = valores_negativos['concept']
+concept.value_counts()
+```
+```Bash
+concept
+Total Trade Balance Exports Total - Imports Total CIF    115
+Total Trade Balance Exports Total - Imports Total         84
+Name: count, dtype: int64
+```
+
+También se verifico si existian valores negátivos con otro tipo de concepto
+```Python
+# Ver si hay otros conceptos con valores negativos distintos a la balanza comercial
+otros_negativos = valores_negativos[~valores_negativos['concept'].str.contains('Trade Balance', case=False)]
+print(f'Otros valores negativos fuera del concepto de balanza: {len(otros_negativos)}')
+otros_negativos.head()
+```
+```Bash
+Otros valores negativos fuera del concepto de balanza: 0
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>prod_est</th>
+      <th>coverage</th>
+      <th>type</th>
+      <th>year</th>
+      <th>month</th>
+      <th>concept</th>
+      <th>value_usd</th>
+      <th>status</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div>
+```
+
+*Los valores negativos corresponden exclusivamente al concepto de balanza comercial, por lo que no se consideran errores de origen, sino parte del fenómeno económico analizado.*
+
+Los valores negativos en value_usd corresponden a la balanza comercial (exports - imports). Se retienen porque reflejan periodos con déficit comercial, lo cual es relevante para el análisis económico. Esto confirma lo descubierto en el análisis preliminar.
+
+Como parte de la limpieza y procesamiento del conjunto de datos se busco valores atípicos en la columna ``value_usd``
+```Python
+Q1 = df_2012_2023['value_usd'].quantile(0.25)
+Q3 = df_2012_2023['value_usd'].quantile(0.75)
+IQR = Q3 - Q1
+outliers = df_2012_2023[(df_2012_2023['value_usd'] < Q1 - 1.5 * IQR) | (df_2012_2023['value_usd'] > Q3 + 1.5 * IQR)]
+print(f"Outliers detectados por IQR: {len(outliers)}")
+```
+```Bash
+Outliers detectados por IQR: 0
+```
+![Logo]()
+No se encotraron valores atípicos en los datos que sean relevantes (que afecten el proposito del proyecto).
+
+Por último se guardo el conjunto de datos
+```Python
+df_2012_2023.to_csv('../data/processed/mex_trade_2012_2023_clean.csv', index=False)
+print('CSV guardado')
+```
 ### **Análisis exploratorio de datos (EDA)**:
    - [Ej. Distribución, correlaciones, agrupaciones, etc.]
 
