@@ -132,7 +132,10 @@ En conclusión, este análisis exploratorio preliminar no identificó problemas 
 *Archivo: 1_eda.ipynb*
 
 ### **Limpieza y preprocesamiento**
-Durate la limpieza y preparación de los cojuntos de datos se opto por unir los cuatro conjuntos de datos para formar uno solo conjunto de datos que incluya todos los registros.
+Durante esta fase, se llevó a cabo un proceso de limpieza y preparación de los conjuntos de datos de comercio exterior. El objetivo principal fue consolidar la información y asegurar su calidad para análisis posteriores.
+
+Como primera acción, se procedió a unir los cuatro conjuntos de datos individuales (df_2012_2020, df_2021, df_2022, df_2023) en un único DataFrame consolidado, denominado df_2012_2023, para facilitar la gestión y el análisis de todos los registros del período.
+
 ```Python
 df_2012_2023 = pd.concat([df_2012_2020, df_2021, df_2022, df_2023])
 filas, columnas = df_2012_2023.shape
@@ -146,9 +149,10 @@ Filas y columnas del DataFrame 2012 - 2023 (unión de los 4 conjuntos de datos)
 Filas: 2556
 Columnas: 8
 ```
-Por lo que el nuevo conjunto de datos cuenta con *2556* filas y *8* columnas, se verifico los tipo de tados de cada columna dicho tipo de datos son correctos por lo cual no sera necesario cambiar el tipo de datos de cada columna.
+El DataFrame resultante df_2012_2023 ahora contiene 2556 filas y 8 columnas. Se verificaron los tipos de datos de cada columna y se confirmó que eran correctos, lo que eliminó la necesidad de realizar conversiones de tipo.
 
-Debido a la creación del nuevo conjunto de datos se rectificaron los datos para detectar los valores nulos y duplicados, no se encontraron valores nulos ni duplicados.
+Tras la consolidación de los datos, se realizó una nueva verificación exhaustiva de valores nulos y duplicados en el DataFrame unificado para garantizar la integridad del conjunto de datos final. Los resultados confirmaron la ausencia total de ambos:
+
 ```Python
 # Verificar valores nulos
 valores_nulos = df_2012_2023.isnull().sum()
@@ -172,9 +176,9 @@ dtype: int64
 
 Duplicados: 0
 ```
-Los campos ***prod_est, converge, type, concept, status*** ya se revisaron durante el EDA inicial: no se detectaron errores ni necesidad de limpieza adicional en dichos campos.
+Las columnas prod_est, coverage, type, concept, y status ya habían sido revisadas durante el EDA inicial y no se detectaron errores ni la necesidad de limpieza adicional en sus entradas.
 
-Se realizo un análisis para los valores negativos encontrados en el análisis preliminar
+Un punto crucial abordado en esta fase fue el análisis de los valores negativos identificados en la columna value_usd durante el análisis preliminar:
 ```Python
 valores_negativos = df_2012_2023[df_2012_2023['value_usd'] < 0]
 print(f'Cantidad de valores negativos: {len(valores_negativos)}')
@@ -314,7 +318,7 @@ Cantidad de valores negativos: 199
 </div>
 
 
-Se identifico el tipo de conceptos que tiene estos valores negativos
+Se investigó el tipo de conceptos asociados a estos valores negativos:
 ```Python
 concept = valores_negativos['concept']
 concept.value_counts()
@@ -326,7 +330,7 @@ Total Trade Balance Exports Total - Imports Total         84
 Name: count, dtype: int64
 ```
 
-También se verifico si existian valores negátivos con otro tipo de concepto
+Adicionalmente, se verificó si existían valores negativos bajo cualquier otro concepto diferente a la balanza comercial:
 ```Python
 # Ver si hay otros conceptos con valores negativos distintos a la balanza comercial
 otros_negativos = valores_negativos[~valores_negativos['concept'].str.contains('Trade Balance', case=False)]
@@ -356,11 +360,9 @@ Otros valores negativos fuera del concepto de balanza: 0
 </table>
 </div>
 
-*Los valores negativos corresponden exclusivamente al concepto de balanza comercial, por lo que no se consideran errores de origen, sino parte del fenómeno económico analizado.*
+Los resultados confirman que los valores negativos en ``value_usd`` corresponden exclusivamente a los conceptos de balanza comercial (``Total Trade Balance Exports Total - Imports Total`` y ``Total Trade Balance Exports Total - Imports Total CIF``). Esto reitera la conclusión del análisis preliminar: estos valores no son errores de origen, sino una representación válida de periodos con déficit comercial (cuando las importaciones superan a las exportaciones), y por lo tanto, se retienen en el conjunto de datos por su relevancia para el análisis económico del país.
 
-Los valores negativos en value_usd corresponden a la balanza comercial (exports - imports). Se retienen porque reflejan periodos con déficit comercial, lo cual es relevante para el análisis económico. Esto confirma lo descubierto en el análisis preliminar.
-
-Como parte de la limpieza y procesamiento del conjunto de datos se busco valores atípicos en la columna ``value_usd``
+Como parte final de la limpieza y el procesamiento, se realizó una búsqueda de valores atípicos (outliers) en la columna ``value_usd`` utilizando el método del rango intercuartílico (IQR):
 ```Python
 Q1 = df_2012_2023['value_usd'].quantile(0.25)
 Q3 = df_2012_2023['value_usd'].quantile(0.75)
@@ -372,9 +374,9 @@ print(f"Outliers detectados por IQR: {len(outliers)}")
 Outliers detectados por IQR: 0
 ```
 ![Detección de Outliers](reports/figures/deteccion_outliers_valores_comerciales.png)
-No se encotraron valores atípicos en los datos que sean relevantes (que afecten el proposito del proyecto).
+No se identificaron valores atípicos que se consideren relevantes o que pudieran afectar negativamente los objetivos del proyecto.
 
-Por último se guardo el conjunto de datos
+Finalmente, el conjunto de datos consolidado y validado fue guardado en formato CSV para su uso en análisis posteriores:
 ```Python
 df_2012_2023.to_csv('../data/processed/mex_trade_2012_2023_clean.csv', index=False)
 print('CSV guardado')
