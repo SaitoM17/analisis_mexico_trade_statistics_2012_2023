@@ -371,7 +371,7 @@ print(f"Outliers detectados por IQR: {len(outliers)}")
 ```Bash
 Outliers detectados por IQR: 0
 ```
-![Logo]()
+![Detección de Outliers](reports/figures/deteccion_outliers_valores_comerciales.png)
 No se encotraron valores atípicos en los datos que sean relevantes (que afecten el proposito del proyecto).
 
 Por último se guardo el conjunto de datos
@@ -379,6 +379,9 @@ Por último se guardo el conjunto de datos
 df_2012_2023.to_csv('../data/processed/mex_trade_2012_2023_clean.csv', index=False)
 print('CSV guardado')
 ```
+
+*Archivo: 2_limpieza_transformacion.ipynb*
+
 ### **Análisis exploratorio de datos (EDA)**:
    - [Ej. Distribución, correlaciones, agrupaciones, etc.]
 
