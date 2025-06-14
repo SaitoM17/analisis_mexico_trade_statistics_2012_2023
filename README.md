@@ -184,19 +184,6 @@ valores_negativos.head(10)
 Cantidad de valores negativos: 199
 ```
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -348,21 +335,8 @@ otros_negativos.head()
 ```
 ```Bash
 Otros valores negativos fuera del concepto de balanza: 0
-
+```
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -381,7 +355,6 @@ Otros valores negativos fuera del concepto de balanza: 0
   </tbody>
 </table>
 </div>
-```
 
 *Los valores negativos corresponden exclusivamente al concepto de balanza comercial, por lo que no se consideran errores de origen, sino parte del fenómeno económico analizado.*
 
