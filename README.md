@@ -182,6 +182,7 @@ valores_negativos.head(10)
 ```
 ```Bash
 Cantidad de valores negativos: 199
+```
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -324,7 +325,7 @@ Cantidad de valores negativos: 199
   </tbody>
 </table>
 </div>
-```
+
 
 Se identifico el tipo de conceptos que tiene estos valores negativos
 ```Python
