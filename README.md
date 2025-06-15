@@ -582,11 +582,6 @@ Este boxplot proporciona una visión robusta y granular de la evolución del val
 ![Boxplot de value_usd por Año y Tipo de Operación](reports/figures/boxplot_value_usd_anio_tipo_operacion.png)
 
 *Archivo: [Análisis Estadístico](notebooks/5_analisis_estadistico.ipynb)*
-<!-- #### **Conclusión General del Análisis Estadístico**
-
-Este análisis estadístico descriptivo ha proporcionado una comprensión cuantitativa profunda del comportamiento del comercio exterior de México entre 2012 y 2023. Se han identificado patrones claros de crecimiento en el valor promedio de las transacciones, acompañado de una creciente asimetría en la distribución (influencia de transacciones de alto valor) y una notable variabilidad en los montos. Se ha confirmado la naturaleza fluctuante de la balanza comercial, que tiende al déficit pero con oscilaciones significativas.
-
-Los hallazgos de esta fase, complementados por las visualizaciones detalladas, establecen una línea base robusta del comportamiento comercial y serán fundamentales para las fases posteriores del análisis, como la evaluación del impacto de eventos específicos o la formulación de modelos predictivos. -->
 
 ### **Análisis de Impacto Post-T-MEC**
 
@@ -694,9 +689,23 @@ En conjunto, estos gráficos de caja ofrecen una evidencia visual contundente qu
 
 ## 📈 Conclusiones y Recomendaciones
 
-- [Insight 1]
-- [Insight 2]
-- [Recomendación práctica o estratégica basada en los datos]
+**Conclusiones Clave**
+* México presenta un déficit comercial crónico y creciente, ya que las importaciones superan consistentemente a las exportaciones en valor, alcanzando su punto máximo en 2022.
+* El crecimiento del comercio exterior es robusto, pero impulsado asimétricamente por un pequeño número de transacciones de muy alto valor.
+Existe un aumento generalizado en la variabilidad y heterogeneidad de los valores de las transacciones, con la dispersión entre exportaciones e importaciones uniformándose desde 2014.
+* El T-MEC ha tenido un impacto estadísticamente significativo en el incremento del valor promedio de exportaciones e importaciones, dinamizando el flujo comercial.
+* Durante la pandemia (2020), las exportaciones mostraron una resiliencia atípica, resultando en el déficit comercial más bajo del periodo, seguido de una rápida recuperación en 2021 y 2022.
+* Se observan patrones estacionales recurrentes en el comercio, con picos de actividad en marzo, mayo, agosto y octubre, y 2023 destacándose como el año de mayor actividad mensual promedio.
+* Los conceptos de manufactura, no petroleros y agregados (importaciones/exportaciones totales) son los principales motores del valor del comercio exterior, mostrando alta heterogeneidad.
+
+**Recomendaciones Estratégicas**
+* Mitigar el déficit comercial mediante el análisis de sectores clave para fomentar la producción nacional y la sustitución de importaciones estratégicas.
+* Implementar estrategias diferenciadas para transacciones de alto y bajo valor, apoyando a grandes generadores y buscando elevar el valor promedio de las operaciones de menor cuantía.
+* Desarrollar e implementar herramientas avanzadas de gestión de riesgos para hacer frente a la creciente volatilidad y heterogeneidad de los montos transaccionales.
+* Optimizar el aprovechamiento del T-MEC a través de un análisis profundo de los sectores beneficiados, guiando políticas de promoción e integración regional.
+* Fortalecer estratégicamente la capacidad exportadora de México, especialmente en sectores manufactureros y no petroleros, para buscar un equilibrio más favorable en la balanza comercial.
+* Aprovechar los patrones estacionales identificados para optimizar la logística, producción y estrategias de inventario a lo largo del año.
+* Realizar estudios de causalidad avanzados para diferenciar el impacto directo del T-MEC de otros factores económicos externos, como la pandemia.
 
 ---
 
