@@ -384,8 +384,63 @@ print('CSV guardado')
 
 *Archivo: 2_limpieza_transformacion.ipynb*
 
-### **Análisis exploratorio de datos (EDA)**:
-   - [Ej. Distribución, correlaciones, agrupaciones, etc.]
+### **Análisis exploratorio de datos (EDA)**
+Con el conjunto de datos limpio y consolidado, se procedió a realizar un análisis exploratorio detallado para obtener una visión profunda del comportamiento del comercio exterior de México, enfocándose en el volumen por tipo de operaciones y su evolución temporal.
+
+**Volumen Total: Tendencias Anuales por Tipo de Operación**
+
+La primera visualización revela las tendencias anuales del volumen total de exportaciones, importaciones y la categoría "Not applicable", ofreciendo una panorámica del flujo comercial del país.
+
+- **Dominio Persistente de las Importaciones (Línea Turquesa):** Las importaciones han representado consistentemente el mayor volumen de valor en USD a lo largo de todo el período (2012-2023). Superando significativamente a las exportaciones en la mayoría de los años, muestran una clara tendencia de crecimiento desde 2012 hasta 2022, alcanzando un pico de aproximadamente $2,461,878 USD en 2022. En 2023, se observa una ligera disminución, cerrando en $2,054,154 USD.
+- **Crecimiento Sostenido de las Exportaciones (Línea Azul Oscuro):** Las exportaciones también exhiben una tendencia de crecimiento a lo largo del período, aunque con fluctuaciones. Comenzaron en $1,112,310 USD en 2012 y alcanzaron un pico en 2022 con $1,733,206 USD. Similar a las importaciones, las exportaciones experimentaron una caída en 2023, situándose en $1,480,532 USD.
+- **Impacto de "Not applicable" (Línea Verde Claro):** Esta categoría permanece consistentemente en valores negativos y cercanos a cero en todos los años. Sugiere que representa saldos negativos, ajustes o rubros que restan al valor total del comercio, en lugar de un volumen de bienes o servicios transaccionado. Su valor se mantuvo relativamente bajo en comparación con exportaciones e importaciones, oscilando entre -$9,689 USD (2012) y -$75,468 USD (2022). Un valor atípico y el más "positivo" que alcanza es un ligero $58,077 USD en 2020.
+
+**Comportamiento Reciente (2020-2023):**
+- **2020 (Año de la Pandemia):** Se observa una caída notable tanto en exportaciones ($1,251,512 USD) como en importaciones ($1,532,528 USD) en 2020, lo cual es esperable debido a las interrupciones en el comercio global causadas por la pandemia de COVID-19.
+- **Recuperación Post-Pandemia (2021-2022):** Los años siguientes mostraron una fuerte recuperación, con ambos volúmenes alcanzando sus puntos más altos en 2022, evidenciando la resiliencia del comercio.
+- **Ligero Descenso en 2023:** Tanto las exportaciones como las importaciones mostraron una disminución en 2023 en comparación con 2022, lo que podría indicar una desaceleración en el crecimiento comercial al final del período analizado.
+![Volumne Total de Exportaciones e Importaciones por Año y Tipo](reports/figures/volumen_total_exportaciones_importaciones_2012_2023.png)
+
+
+**Composición del Comercio: Conceptos Clave por Valor Acumulado**
+
+Para comprender la estructura interna de estos flujos, se analizó el top de conceptos con mayor valor acumulado por tipo de operación (Imports, Exports, Not applicable) durante el período 2012-2023.
+
+- **Dominio de Importaciones Totales:**
+   - **Los conceptos con mayor valor acumulado están ambos relacionados con las Importaciones:** ``"Total Imports CIF (Total Imports + Freight and Insurance of Imports)" encabeza la lista con $5,427,293.28 USD``. Esto indica que al considerar el costo de los bienes más el flete y el seguro, este es el rubro de mayor peso monetario.
+   - **"Total Imports"** es el segundo concepto más grande. Esto resalta la magnitud general de las importaciones en el comercio.
+- **Volumen Significativo de Exportaciones Totales y No Petroleras:**
+   - **"Total Exports" es el tercer concepto más relevante con $5,206,323.57 USD**. Esto muestra que las exportaciones totales tienen un peso considerable en el panorama comercial.
+   - **"Non Petroleum (No Petroleras)"** es el cuarto concepto. Su composición (barras azul oscuro para Imports y verde azulado para Exports) indica que tanto las importaciones como las exportaciones de productos no petroleros son sustanciales, siendo las importaciones de productos no petroleros significativamente mayores que las exportaciones de este tipo.
+- **Composición por Tipo de Comercio (Color):** La coloración de las barras (azul oscuro para Imports, verde azulado para Exports, verde claro para Not applicable) permite visualizar la dominancia o combinación de flujos comerciales:
+   - **"Manufacturing (Manufactura)"** es un concepto de alto valor, dominado por las importaciones, pero con una contribución notable de las exportaciones, lo que sugiere un intercambio bidireccional importante en este sector.
+   - **"Intermediate Goods (Bienes Intermedios)"** es predominantemente una categoría de importaciones, lo que es común en cadenas de suministro que dependen de insumos extranjeros para la producción local.
+   - **"Consumer Goods (Bienes de Consumo)"** también es mayoritariamente de importaciones.
+   - **"Petroleum (Petróleo)"** tiene contribuciones tanto de importaciones como de exportaciones, siendo las exportaciones de petróleo ligeramente mayores en este caso acumulado.
+- **Conceptos de Menor Valor (al final de la lista):** Conceptos como "Crude Oil (Petróleo Crudo)", "Agrarian (Agrario)", y "Freight and insurance of Imports" tienen valores acumulados mucho menores en comparación con los "Totales" o "Manufactura". Las categorías como "Extractive (Extractiva)" y "Other Oil (Otro Petróleo)" son aún menores.
+- **Balances Comerciales Negativos:** Las categorías con valores negativos, como **"Total Trade Balance Exports Total - Imports Total CIF" con $-220,969.71 USD**, se encuentran al final de la lista. Estas categorías, con barras de color verde claro (Not applicable), muestran valores negativos, lo cual es esperado, ya que el balance comercial (exportaciones - importaciones) a menudo es negativo en una economía con más importaciones que exportaciones, y se alinea con la observación del gráfico de líneas anterior de que las importaciones superan a las exportaciones.
+![Top concept con mayor valor acumulado 2012 - 2023](reports/figures/top_concept_mayor_valor_acumulado_2012_2023.png)
+
+**Participación Porcentual Anual: Reafirmando el Déficit**
+
+La proporción anual del comercio por tipo confirma la hegemonía de las importaciones y la estabilidad de la participación de las exportaciones.
+
+- **Las Importaciones Lideran de Forma Sostenida:** A lo largo de todo el período (2012-2023), las **Importaciones (Imports % - barra naranja)** han sido el motor principal del comercio exterior, representando consistentemente **más del 57% del total anual**. Esta hegemonía subraya una economía con una alta demanda de bienes y servicios del extranjero.
+- **Exportaciones: Estabilidad en la Proporción, no en el Volumen:** La participación de las **Exportaciones (Exports % - barra azul)** se ha mantenido sorprendentemente estable, oscilando alrededor del 42%-43% del comercio total cada año. Esto sugiere que, a pesar de las fluctuaciones en el volumen absoluto de exportaciones, su proporción relativa dentro del pastel comercial se ha mantenido constante.
+- **La Anomalía de 2020: Un Punto de Inflexión Inesperado:** El año **2020 destaca como una excepción notable**, probablemente influenciada por la pandemia global. En contraste con la tendencia general, la participación de las **Importaciones disminuyó a su punto más bajo (54.24%)**, mientras que las **Exportaciones alcanzaron su pico (43.73%)**. Adicionalmente, la categoría "Not applicable %" (barra verde), que generalmente representa ajustes negativos, se tornó positiva (2.03%) por primera vez. Este cambio abrupto podría indicar que, durante la crisis de 2020, la caída en las importaciones fue más pronunciada que la de las exportaciones, alterando drásticamente las proporciones relativas del comercio total.
+![Participación Porcentual Anual de Exportaciones e Importaciones](reports/figures/participacion_porcentual_anual_exportaciones_importaciones_2012_2023.png)
+
+**Patrones Mensuales: Estacionalidad y el Impacto de la Pandemia**
+
+El análisis del valor promedio mensual del comercio, visualizado en un mapa de calor, revela patrones estacionales recurrentes y el impacto disruptivo de eventos globales.
+
+- **Crecimiento Sostenido a lo Largo de la Década:** Se observa un crecimiento constante y significativo en el valor promedio mensual del comercio a lo largo de los años. Los datos de los años más recientes (2022 y 2023) muestran consistentemente los valores más altos, destacando una expansión general en el volumen o valor del comercio. Este patrón sugiere una economía en constante expansión con un aumento en la actividad comercial global.
+- **Patrones Estacionales Recurrentes:** Más allá del crecimiento anual, existen patrones estacionales o mensuales que se repiten. Ciertos meses, como **marzo (3), mayo (5), agosto (8) y octubre (10)**, tienden a mostrar consistentemente un mayor valor promedio, indicando posibles picos de actividad comercial relacionados con ciclos de producción, demanda de temporada o festividades. Por otro lado, los primeros meses del año (Enero y Febrero) y algunos meses intermedios (como Julio) a veces muestran valores ligeramente más bajos.
+- **El Impacto Anómalo de 2020:** El año **2020 se destaca como una clara anomalía** en la tendencia de crecimiento. Específicamente, los meses de **Abril (4) con $9,433.74 USD y Mayo (5) con $7,466.27 USD** registraron los valores promedio más bajos de todo el período analizado, representados por colores azul oscuro muy frío. Este descenso abrupto es altamente consistente con el impacto global de la pandemia de COVID-19, que causó interrupciones masivas en las cadenas de suministro y el comercio internacional. Es alentador ver una recuperación gradual en los meses siguientes de 2020 (June en adelante), lo que demuestra la resiliencia del sector.
+- **Aceleración del Crecimiento en Años Recientes (2021-2023):** Los años 2021, 2022 y especialmente 2023 han mostrado una aceleración notable en el crecimiento, con valores promedio mensuales que superan consistentemente los $16,000 - $20,000 USD. El **2023 se posiciona como el año de mayor actividad comercial** en el período estudiado, con varios meses superando la marca de los $20,000 USD (e.g., Marzo, Mayo, Agosto, Octubre). Esto subraya una fuerte recuperación y un impulso significativo en la actividad comercial en la era pospandemia.
+![Mapa de calor](reports/figures/mapa_calor.png)
+
+*Archivo: 3_analisis_descriptivo.ipynb*
 
 ### **Visualización de datos**:
    - Uso de gráficos de barras, líneas, cajas, dispersión y mapas de calor.
