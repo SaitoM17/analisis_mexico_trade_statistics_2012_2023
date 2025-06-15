@@ -588,8 +588,107 @@ Este análisis estadístico descriptivo ha proporcionado una comprensión cuanti
 
 Los hallazgos de esta fase, complementados por las visualizaciones detalladas, establecen una línea base robusta del comportamiento comercial y serán fundamentales para las fases posteriores del análisis, como la evaluación del impacto de eventos específicos o la formulación de modelos predictivos. -->
 
-### **Conclusiones y recomendaciones**:
-   - Síntesis de hallazgos clave y propuestas de acción.
+### **Análisis de Impacto Post-T-MEC**
+
+Para evaluar el impacto potencial del Tratado entre México, Estados Unidos y Canadá (T-MEC), se dividió el conjunto de datos en dos periodos:
+```Bash
+Número de registros Pre-T-MEC (2012-2019): 1728
+Número de registros Post-T-MEC (2020-2023): 828
+```
+Se realizó una comparación inicial de las medias del valor en USD para exportaciones e importaciones en ambos periodos:
+```Bash
+Medias de Value_USD (Pre-T-MEC):
+  Exportaciones: 12,589.68
+  Importaciones: 17,281.85
+
+Medias de Value_USD (Post-T-MEC):
+  Exportaciones: 16,168.75
+  Importaciones: 22,078.47
+```
+**El T-MEC y el Aumento del Flujo Comercial en México**
+
+Nuestro análisis comparativo de los periodos pre y post-T-MEC revela un claro incremento en el valor promedio mensual tanto de las exportaciones como de las importaciones en México. Este aumento sugiere una dinamización del comercio exterior tras la entrada en vigor del tratado.
+
+**Crecimiento de Exportaciones e Importaciones**
+
+Antes del T-MEC (2012-2019), el promedio mensual de las exportaciones era de $12,589.68. Post-T-MEC (2020-2023), esta cifra ascendió a $16,168.75, lo que representa un incremento de $3,579.07 (aproximadamente un 28.49%).
+
+Por su parte, las importaciones también mostraron un alza significativa. De una media de $17,281.85 en el periodo pre-T-MEC, pasaron a $22,078.47 en el periodo post-T-MEC, un aumento de $4,796.62 (cerca del 27.75%).
+
+**Un Aumento Absoluto Mayor en Importaciones**
+
+Si bien ambos rubros experimentaron un crecimiento porcentual similar, es importante destacar que el incremento absoluto en el valor promedio mensual de las importaciones fue mayor ($4,796.62) que el de las exportaciones ($3,579.07). Esto sugiere que, si bien el T-MEC impulsó ambos lados de la balanza comercial, el crecimiento en el flujo de entrada de bienes fue marginalmente más pronunciado.
+
+**Prueba de Hipótesis: Confirmación Estadística del Impacto del T-MEC**
+
+Para determinar si estos incrementos observados en las medias son estadísticamente significativos y no producto del azar, se procedió a realizar pruebas de hipótesis para exportaciones e importaciones, formulando las siguientes:
+
+* **H0 (Hipótesis Nula):** No hay diferencia significativa en el valor medio antes y después del T-MEC.
+* **H1 (Hipótesis Alterna):** Sí hay una diferencia significativa en el valor medio antes y después del T-MEC.
+Se realizaron pruebas de normalidad (Shapiro-Wilk) y de homogeneidad de varianzas (Levene) para determinar la prueba paramétrica o no paramétrica más adecuada.
+
+```Bash
+--- Comparación para EXPORTACIONES ---
+  Prueba de Levene (Exportaciones): Estadístico=11.9396, p-valor=0.0006
+  -> Las varianzas de Exportaciones son significativamente diferentes.
+  Normalidad Exportaciones Pre-T-MEC (Shapiro): p-valor=0.0000
+  Normalidad Exportaciones Post-T-MEC (Shapiro): p-valor=0.0000
+  -> Al menos un grupo de Exportaciones NO parece seguir una distribución normal.
+  Mann-Whitney U (Exportaciones): Estadístico=120006.0000, p-valor=0.0000
+  CONCLUSIÓN: Rechazamos H0. Hay una diferencia significativa en la media de Exportaciones entre los periodos Pre-T-MEC y Post-T-MEC.
+
+--- Comparación para IMPORTACIONES ---
+  Prueba de Levene (Importaciones): Estadístico=70.0658, p-valor=0.0000
+  -> Las varianzas de Importaciones son significativamente diferentes.
+  Normalidad Importaciones Pre-T-MEC (Shapiro): p-valor=0.0000
+  Normalidad Importaciones Post-T-MEC (Shapiro): p-valor=0.0000
+  -> Al menos un grupo de Importaciones NO parece seguir una distribución normal.
+  Mann-Whitney U (Importaciones): Estadístico=113607.0000, p-valor=0.0000
+  CONCLUSIÓN: Rechazamos H0. Hay una diferencia significativa en la media de Importaciones entre los periodos Pre-T-MEC y Post-T-MEC.
+```
+
+**El T-MEC Impulsó Significativamente el Comercio Mexicano**
+
+Nuestro análisis estadístico confirma lo que las cifras iniciales sugerían: la entrada en vigor del T-MEC, y el período subsiguiente, marcó un cambio estadísticamente significativo en el valor promedio tanto de las exportaciones como de las importaciones en México. Esto significa que los incrementos observados en el comercio no son producto del azar, sino que reflejan una verdadera transformación en la dinámica comercial del país.
+
+**Impacto Confirmado en Exportaciones**
+
+Las pruebas realizadas para las exportaciones demuestran contundentemente que hay una diferencia significativa en el valor promedio entre el período Pre-T-MEC y Post-T-MEC. Las varianzas entre ambos periodos son distintas y los datos no siguen una distribución normal, lo que validó la elección de la prueba no paramétrica Mann-Whitney U. El p-valor extremadamente bajo nos permite rechazar la hipótesis nula, reforzando que el aumento de $12,589.68 a $16,168.75 en la media de las exportaciones es un cambio real y sustancial.
+
+**Crecimiento Confirmado en Importaciones**
+
+De manera similar, las importaciones también muestran una diferencia estadísticamente significativa en su valor promedio entre ambos períodos. Al igual que con las exportaciones, las varianzas son diferentes y los datos no se distribuyen normalmente, haciendo de la prueba Mann-Whitney U la herramienta adecuada. El p-valor igualmente bajo nos permite rechazar la hipótesis nula, confirmando que el incremento de $17,281.85 a $22,078.47 en la media de las importaciones es un cambio genuino.
+
+**Consideraciones Clave del Análisis**
+
+Es crucial destacar la robustez de estas conclusiones gracias a la correcta elección de las pruebas estadísticas. La identificación de varianzas significativamente diferentes y la falta de normalidad en la distribución de los datos justificaron la aplicación de la prueba no paramétrica de Mann-Whitney U, asegurando la validez de nuestras inferencias.
+
+En resumen, los resultados no solo muestran un aumento en el comercio post-T-MEC, sino que lo validan estadísticamente, indicando que este nuevo tratado y los factores asociados a su implementación (incluyendo, posiblemente, la adaptación a los cambios globales derivados de la pandemia) han tenido un impacto real y medible en el incremento del valor promedio de las transacciones comerciales de México, tanto de entrada como de salida.
+![Distribuación de Exportaciones - Importaciones (Pre vs Post-T-MEC)](reports/figures/distribucion_exportacion_importacion_pre_post_t_mec.png)
+
+**Visualizando el Impacto del T-MEC en Exportaciones e Importaciones**
+
+Los gráficos de caja (boxplots) confirman visualmente las conclusiones estadísticas previas, mostrando una clara diferencia en la distribución de los valores de exportaciones e importaciones entre el período Pre-T-MEC y Post-T-MEC.
+
+**Exportaciones: Un Salto Cuantitativo Post-T-MEC**
+
+El boxplot de Exportaciones ilustra un aumento notable en el valor:
+
+* ***Pre-T-MEC:*** La caja es más compacta y se sitúa en un rango de valores más bajos, con una mediana que indica que la mayoría de las exportaciones se concentraban en valores menores.
+* ***Post-T-MEC:*** La caja se desplaza significativamente hacia arriba y es considerablemente más grande. Esto sugiere no solo un aumento en la mediana (valor central) de las exportaciones, sino también una mayor variabilidad o dispersión en los valores, reforzando la idea de un incremento generalizado en el valor de las exportaciones post-T-MEC.
+
+**Importaciones: Crecimiento y Mayor Amplitud**
+
+El boxplot de Importaciones refleja un patrón similar de crecimiento:
+
+* ***Pre-T-MEC:*** La caja se encuentra en un rango intermedio, con una mediana ya más alta que la de las exportaciones en el mismo período.
+* ***Post-T-MEC:*** Al igual que con las exportaciones, la caja de las importaciones se desplaza visiblemente hacia arriba, indicando un aumento en su mediana y en el rango de valores. La mayor altura de la caja también sugiere una mayor dispersión en los valores de importación después del T-MEC.
+
+**Conclusión Visual**
+
+En conjunto, estos gráficos de caja ofrecen una evidencia visual contundente que corrobora las conclusiones estadísticas: tanto las exportaciones como las importaciones experimentaron un claro incremento en sus valores centrales y rango en el período posterior a la implementación del T-MEC. La mayor amplitud de las cajas también sugiere un aumento en la variabilidad, haciendo tangibles los cambios significativos detectados por las pruebas de hipótesis en la distribución de los datos.
+
+*Archivo: [Análisis de Impacto POST-T-MEC](notebooks/6_analisis_impacto_post_t_mec.ipynb)*
 
 ---
 
