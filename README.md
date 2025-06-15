@@ -129,7 +129,7 @@ Un punto importante de este EDA fue la identificación de registros con valores 
 
 En conclusión, este análisis exploratorio preliminar no identificó problemas de calidad significativos en los conjuntos de datos, asegurando una base robusta y fiable para fases de análisis más avanzadas.
 
-*Archivo: 1_eda.ipynb*
+*Archivo: [Análisis Exploratorio de Datos - Inicial](notebooks/1_eda.ipynb)*
 
 ### **Limpieza y preprocesamiento**
 Durante esta fase, se llevó a cabo un proceso de limpieza y preparación de los conjuntos de datos de comercio exterior. El objetivo principal fue consolidar la información y asegurar su calidad para análisis posteriores.
@@ -382,7 +382,7 @@ df_2012_2023.to_csv('../data/processed/mex_trade_2012_2023_clean.csv', index=Fal
 print('CSV guardado')
 ```
 
-*Archivo: 2_limpieza_transformacion.ipynb*
+*Archivo: [Limpieza y transformación](notebooks/2_lipieza_transformacion.ipynb)*
 
 ### **Análisis exploratorio de datos (EDA)**
 Con el conjunto de datos limpio y consolidado, se procedió a realizar un análisis exploratorio detallado para obtener una visión profunda del comportamiento del comercio exterior de México, enfocándose en el volumen por tipo de operaciones y su evolución temporal.
@@ -440,7 +440,7 @@ El análisis del valor promedio mensual del comercio, visualizado en un mapa de 
 - **Aceleración del Crecimiento en Años Recientes (2021-2023):** Los años 2021, 2022 y especialmente 2023 han mostrado una aceleración notable en el crecimiento, con valores promedio mensuales que superan consistentemente los $16,000 - $20,000 USD. El **2023 se posiciona como el año de mayor actividad comercial** en el período estudiado, con varios meses superando la marca de los $20,000 USD (e.g., Marzo, Mayo, Agosto, Octubre). Esto subraya una fuerte recuperación y un impulso significativo en la actividad comercial en la era pospandemia.
 ![Mapa de calor](reports/figures/mapa_calor.png)
 
-*Archivo: 3_analisis_descriptivo.ipynb*
+*Archivo: [Análisis Descriptivo](notebooks/3_analisis_descriptivo.ipynb)*
 
 ### **Balanza Comercial y Tendencia**
 ***Balance Comercial: Un Déficit Crónico y en Aumento***
