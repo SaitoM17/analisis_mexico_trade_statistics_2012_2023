@@ -465,8 +465,128 @@ La balanza comercial de la entidad ha estado en un déficit crónico a lo largo 
 
 *Archivo: [Balanza Comercial y Tendencias](notebooks/4_balanza_comercial_tendencia.ipynb)*
 
-### **Modelado o reportes (opcional)**:
-   - [Si aplica: modelos de ML, clustering, predicciones, etc.]
+### **Análisis Estadístico Detallado**
+
+Esta sección profundiza en el comportamiento cuantitativo del comercio exterior de México entre 2012 y 2023, aplicando diversas técnicas estadísticas descriptivas. El objetivo es desentrañar patrones clave, evaluar la variabilidad y detectar anomalías en el valor de las transacciones, tanto a nivel anual como por tipo de operación y concepto. Este análisis sienta las bases para comprender la dinámica comercial antes de la implementación del T-MEC y para la formulación de hipótesis más sólidas.
+
+#### **1. Evolución Anual: Crecimiento Impulsado por Transacciones de Alto Valor y Creciente Dispersión**
+
+El análisis de la evolución anual de la media, mediana y desviación estándar del `value_usd` (valor en USD) desde 2012 a 2023 revela patrones cruciales sobre la dinámica del comercio exterior.
+
+**Crecimiento Impulsado por Transacciones de Alto Valor**
+
+Observamos una clara y sostenida tendencia ascendente en el valor promedio (media) de las transacciones comerciales a lo largo del periodo. Esto indica una expansión constante del volumen económico en el comercio exterior.
+
+Sin embargo, el comportamiento de la mediana, que es consistentemente inferior a la media, sugiere un insight fundamental: la distribución de los valores de las transacciones está sesgada positivamente. Esto significa que el crecimiento del promedio es significativamente impulsado por un número relativamente pequeño de transacciones de muy alto valor, mientras que la mayoría de las operaciones se sitúan en rangos de valor inferiores. Es decir, no todas las transacciones crecen de manera uniforme, sino que algunas operaciones de gran envergadura son las que "tiran" de la media hacia arriba.
+
+**Aumento de la Dispersión y la Complejidad del Comercio**
+
+Paralelamente al crecimiento en los valores promedio, la desviación estándar también ha mostrado un aumento notable y sostenido a lo largo de los años. Este incremento en la dispersión nos indica que la variabilidad de los valores de las transacciones ha crecido significativamente. En términos prácticos, esto significa que la brecha entre las transacciones de menor y mayor valor se ha ampliado, haciendo que el panorama comercial sea más heterogéneo y, potencialmente, más complejo de analizar en detalle.
+
+En los años más recientes, la desviación estándar incluso se acerca o supera el valor de la media, lo cual es una señal potente de que la dispersión es una característica dominante del comercio actual, y que las transacciones individuales pueden variar enormemente en su magnitud.
+
+**Conclusión de la Evolución Anual:**
+
+En síntesis, el comercio exterior de México ha experimentado un crecimiento robusto en sus valores promedio. No obstante, este crecimiento viene acompañado de una creciente asimetría en la distribución de las transacciones y una mayor variabilidad en los montos operados. Este patrón es coherente con la presencia de "outliers" (valores atípicos) que, aunque no necesariamente errores, ejercen una influencia significativa en las estadísticas agregadas y reflejan una mayor disparidad en las operaciones comerciales a lo largo del tiempo.
+![Media, Mediana y Desviación Estándar por Años](reports/figures/media_mediana_std_años.png)
+
+#### **2. Análisis por Tipo de Operación: Disparidad y Variabilidad en los Flujos Comerciales**
+
+El análisis desagregado de las medidas estadísticas (media, mediana y desviación estándar) por tipo de operación ('Exports', 'Imports' y 'Not applicable') revela características distintivas para cada componente del comercio exterior.
+
+**Exportaciones: Impulsadas por Pocas Transacciones de Gran Volumen**
+
+Las exportaciones muestran una marcada asimetría positiva. Si bien su media se sitúa en un rango moderado (alrededor de 13,000-14,000 USD), la mediana es sustancialmente menor (aproximadamente 2,000 USD). Este patrón sugiere que el valor promedio de las exportaciones es fuertemente influenciado por un número limitado de transacciones de muy alto valor, mientras que la mayoría de las operaciones de exportación son de menor cuantía. La elevada desviación estándar (más de 16,000 USD) refuerza esta idea, indicando una alta dispersión y heterogeneidad en los montos de las exportaciones.
+
+**Importaciones: Mayor Valor Promedio y Dispersión Similar a Exportaciones**
+
+Las importaciones presentan, en promedio, un valor significativamente más alto que las exportaciones, con una media cercana a los 18,000 USD y una mediana también más elevada (alrededor de 12,500 USD). Aunque persiste una asimetría, la brecha entre la media y la mediana es comparativamente menor, lo que podría indicar una distribución de valores con un "piso" más alto en las importaciones. Curiosamente, la desviación estándar de las importaciones es muy similar a la de las exportaciones (ligeramente por encima de 16,000 USD), lo que implica que ambos flujos comerciales exhiben una considerable variabilidad en sus montos.
+
+**"No Aplicable" (Balanza Comercial): Fluctuación Alrededor del Equilibrio**
+
+La categoría "Not applicable", que representa principalmente la balanza comercial, se caracteriza por tener una media y mediana cercanas a cero (o incluso ligeramente negativas). Esto es coherente con su naturaleza de reflejar déficits o superávits que promedian alrededor de un punto de equilibrio. Sin embargo, a pesar de sus valores centrales bajos, la desviación estándar es considerable (alrededor de 2,500 USD). Este insight es crucial: indica que, aunque el promedio esté cerca de cero, la balanza comercial experimenta fluctuaciones significativas, oscilando entre periodos de déficit y superávit de magnitudes variadas.
+
+**Conclusión por Tipo de Operación:**
+
+En resumen, este análisis por tipo de operación subraya que, si bien las importaciones manejan en promedio valores más altos que las exportaciones, ambos flujos presentan una alta variabilidad, impulsados por transacciones de gran magnitud que elevan sus promedios. Por otro lado, la balanza comercial ("Not applicable") muestra una tendencia a promediar cerca del equilibrio, pero con una dispersión que refleja su constante oscilación entre periodos de superávit y déficit. Este panorama refuerza la imagen de un comercio exterior dinámico, con componentes de muy distinto tamaño y una variabilidad inherente en sus operaciones.
+![Media, Mediana y Desviación Estándar por Tipos](reports/figures/media_mediana_std_tipos.png)
+
+#### **3. Análisis por Concepto: Disparidad y Heterogeneidad a Nivel Granular**
+
+El análisis granular de la media, mediana y desviación estándar por cada concepto de comercio (`concept`) revela la estructura de valor y la variabilidad inherente en los distintos segmentos del comercio exterior de México.
+
+**Los Motores del Comercio: Altos Valores y Extrema Heterogeneidad**
+
+Los conceptos que realmente impulsan el valor del comercio exterior de México son claramente identificables: "Manufacturing", "Non Petroleum", y los agregados de "Total Exports", "Total Imports", y "Total Imports CIF". Estas categorías no solo exhiben las medias más altas, indicando su preponderancia en el valor promedio de las transacciones, sino que también presentan una brecha considerable entre la media y la mediana. Este patrón subraya que, dentro de estos segmentos críticos, un número limitado de transacciones de muy alto valor son las que elevan significativamente el promedio, mientras que la mayoría de las operaciones son de menor magnitud.
+
+Aunado a esto, la desviación estándar es notablemente alta para estos conceptos, superando con frecuencia el valor de la mediana. Esto es un insight fundamental: no solo estamos hablando de grandes volúmenes, sino de una extrema variabilidad en los montos de las transacciones dentro de estas categorías, reflejando una amplia gama de tamaños de operaciones que van desde pequeñas a gigantescas.
+
+**Balanza Comercial: Déficit Promedio con Amplia Oscilación**
+
+Los conceptos relacionados con la balanza comercial ("Total Trade Balance Exports Total - Imports Total" y "Total Trade Balance Exports Total - Imports Total CIF") se distinguen por tener medias y medianas cercanas a cero, o incluso negativas, confirmando la tendencia de un déficit comercial promedio para México en el periodo.
+
+Sin embargo, el insight más relevante aquí es la notable desviación estándar para estas categorías. A pesar de los promedios bajos, la dispersión es significativamente mayor que la media o mediana en valor absoluto. Esto implica que, aunque el balance general se incline hacia el déficit, existe una gran volatilidad en la balanza comercial mensual, con oscilaciones considerables entre períodos de déficit y, ocasionalmente, superávit. Esta variabilidad subraya la inestabilidad inherente de este indicador económico.
+
+**Segmentos Intermedios y de Menor Impacto**
+Los conceptos de volumen intermedio, como "Intermediate Goods", "Capital Goods", "Petroleum" y "Consumer Goods", también muestran asimetría y variabilidad, pero en una escala reducida en comparación con los motores principales. Por otro lado, las categorías de bajo volumen como "Agrarian", "Crude Oil", "Extractive", "Freight and insurance of imports", y "Other Oil" exhiben medias, medianas y desviaciones estándar notablemente menores, indicando operaciones de menor magnitud y con menos variabilidad.
+
+**Conclusión General por Concepto:**
+
+Este análisis granular confirma que el comercio exterior de México está dominado en valor por un puñado de categorías agregadas y la manufactura, las cuales no solo son las más significativas en volumen, sino que también son altamente heterogéneas, impulsadas por transacciones excepcionales. Paralelamente, la balanza comercial, si bien promedia un déficit, se caracteriza por una amplia variabilidad que refleja su constante oscilación. Comprender estas disparidades es crucial para estrategias comerciales más focalizadas.
+![Media, Mediana y Desviación Estándar por Conceptos](reports/figures/media_mediana_std_conceptos.png)
+
+#### **4. Variabilidad Anual Comparada: Tendencia Creciente en la Volatilidad del Comercio Exterior**
+
+El análisis comparativo de las varianzas anuales entre exportaciones e importaciones revela una tendencia clara y significativa: la dispersión en el valor de las transacciones comerciales ha aumentado considerablemente a lo largo del período 2012-2023.
+
+**Incremento Generalizado de la Varianza**
+
+Tanto para las exportaciones como para las importaciones, se observa una clara tendencia ascendente en la varianza año tras año. Esto significa que la volatilidad o la amplitud de los valores de las transacciones se ha incrementado significativamente con el tiempo. Las varianzas alcanzan sus picos en los años más recientes (2021, 2022 y 2023), superando los 450,000,000 USD$^2$, lo que indica que el comercio se ha vuelto más impredecible en términos de la magnitud de los montos transaccionados. Este hallazgo es coherente con las observaciones previas sobre el aumento de la desviación estándar en los análisis anuales.
+
+**Convergencia en la Variabilidad entre Exportaciones e Importaciones**
+
+Un insight crucial surge al comparar la varianza entre ambos tipos de operaciones. Aunque visualmente las varianzas de exportaciones e importaciones parecen similares en la mayoría de los años, las pruebas estadísticas de Levene ofrecen una visión más matizada:
+
+* **Diferencia Inicial (2012-2013):** Para 2012 y 2013, las varianzas de exportaciones e importaciones fueron estadísticamente diferentes. Esto sugiere que, en los primeros años del período, la dispersión de los montos de exportación no se comportaba de la misma manera que la de importación.
+* **Convergencia Posterior (2014-2023):** Sin embargo, a partir de 2014 y hasta el final del período analizado, no hay evidencia estadística para afirmar que las varianzas entre exportaciones e importaciones sean significativamente diferentes. Esto implica que, a medida que el comercio ha crecido y evolucionado, la dispersión de los montos transaccionados se ha vuelto similar para ambos tipos de operaciones.
+
+**Conclusión de la Variabilidad Anual:**
+
+En resumen, el comercio exterior de México se ha caracterizado por una creciente volatilidad en los montos de sus transacciones. Además, mientras que al inicio del período hubo diferencias en la variabilidad entre exportaciones e importaciones, esta disparidad se ha disipado, indicando que ambos flujos comerciales ahora exhiben una dispersión similar en sus valores a medida que maduran y se expanden. Comprender esta creciente y uniformizada volatilidad es clave para la gestión de riesgos y la planificación estratégica en el sector comercial.
+![Comparación Anual de Varianza de Exportaciones vs Importaciones](reports/figures/comparacion_anual_varianza_exportaciones_importaciones.png)
+
+#### **5. Distribución de Valores: Crecimiento Asimétrico y Mayor Amplitud con Outliers Válidos**
+
+El gráfico de caja (boxplot) del valor en USD por año y tipo de operación ofrece una visión detallada de la distribución, la tendencia central y la variabilidad, consolidando las observaciones previas y revelando patrones clave en la dinámica comercial de México.
+
+**Exportaciones e Importaciones: Crecimiento Asimétrico y Mayor Amplitud**
+
+Los boxplots de Exportaciones (azul) e Importaciones (naranja) confirman visualmente las tendencias observadas anteriormente:
+
+* **Crecimiento en los Valores Centrales y Rango:** Las cajas y las medianas muestran una clara tendencia ascendente a lo largo de los años. Esto no solo valida el incremento en los valores promedio, sino que también indica que la mayor concentración de transacciones se ha movido hacia montos más altos con el tiempo.
+* **Asimetría Marcada (Sesgo Positivo):** Una característica prominente es la marcada asimetría positiva en la distribución de ambos tipos de operaciones. La mediana, casi siempre más cercana al cuartil inferior, y los bigotes superiores notablemente más largos, sugieren que la mayoría de las transacciones son de menor valor, pero un subconjunto de operaciones de muy alto valor son las que "estiran" la distribución hacia arriba, influyendo fuertemente en la media.
+* **Aumento de la Variabilidad:** La creciente amplitud de las cajas y la extensión de los bigotes, especialmente en los años más recientes (2020-2023), junto con la dispersión de los puntos atípicos, refuerzan la conclusión de una variabilidad creciente en los montos de las transacciones de exportación e importación.
+* **Ligeras Diferencias en el Rango Superior:** Aunque hay superposición en los rangos, las cajas de importaciones tienden a posicionarse ligeramente por encima o a tener cuartiles superiores más elevados en muchos años, lo que indica que las importaciones a menudo involucran valores máximos de transacción más altos.
+
+**"No Aplicable" (Balanza Comercial): Balance Cercano a Cero con Eventos Extremos**
+
+Para la categoría "Not applicable" (verde), que representa la balanza comercial, los boxplots revelan:
+
+* **Valores Centrales Alrededor de Cero o Negativos:** Las cajas y medianas se mantienen consistentemente alrededor de cero o en valores negativos, lo cual es coherente con su naturaleza de reflejar saldos que pueden ser superávits (positivos) o déficits (negativos) a lo largo del tiempo.
+* **Dispersión Significativa:** A pesar de los valores centrales bajos, los bigotes y los outliers muestran una dispersión considerable. Esto subraya la fluctuación inherente en la balanza comercial, con meses que registran tanto déficits notables (valores negativos) como, en menor medida, superávits (valores positivos).
+* **Outliers Relevantes:** La presencia de outliers tanto positivos como negativos en esta categoría es crucial. Como se confirmó en la preparación de datos, estos no son errores, sino reflejos de meses con superávits o déficits comerciales de magnitud inusual, aportando información vital para el análisis económico de eventos extremos.
+
+**Conclusión de la Distribución de Valores:**
+
+Este boxplot proporciona una visión robusta y granular de la evolución del valor del comercio exterior. Confirma la tendencia de crecimiento en los valores centrales de exportaciones e importaciones, la marcada asimetría positiva en sus distribuciones, y una variabilidad creciente con el tiempo. Además, subraya la naturaleza oscilatoria de la balanza comercial alrededor de cero o en déficit, con eventos de grandes déficits o superávits que son válidos y esenciales para el análisis. La decisión de mantener estos "outliers" valida la representación real de la magnitud y la dinámica del comercio exterior de México.
+![Boxplot de value_usd por Año y Tipo de Operación](reports/figures/boxplot_value_usd_anio_tipo_operacion.png)
+
+*Archivo: [Análisis Estadístico](notebooks/5_analisis_estadistico.ipynb)*
+<!-- #### **Conclusión General del Análisis Estadístico**
+
+Este análisis estadístico descriptivo ha proporcionado una comprensión cuantitativa profunda del comportamiento del comercio exterior de México entre 2012 y 2023. Se han identificado patrones claros de crecimiento en el valor promedio de las transacciones, acompañado de una creciente asimetría en la distribución (influencia de transacciones de alto valor) y una notable variabilidad en los montos. Se ha confirmado la naturaleza fluctuante de la balanza comercial, que tiende al déficit pero con oscilaciones significativas.
+
+Los hallazgos de esta fase, complementados por las visualizaciones detalladas, establecen una línea base robusta del comportamiento comercial y serán fundamentales para las fases posteriores del análisis, como la evaluación del impacto de eventos específicos o la formulación de modelos predictivos. -->
 
 ### **Conclusiones y recomendaciones**:
    - Síntesis de hallazgos clave y propuestas de acción.
