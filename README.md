@@ -715,8 +715,8 @@ Existe un aumento generalizado en la variabilidad y heterogeneidad de los valore
 - Pandas
 - Matplotlib
 - Seaborn
-- Jupyter Notebook / Google Colab
-- [Otras herramientas que uses, como Scikit-learn, Plotly, etc.]
+- Jupyter Notebook
+- scipy
 
 ---
 
